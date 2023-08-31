@@ -1,8 +1,8 @@
 
 import React from 'react'
-import Upload from './upload'
+
 import cloudinary from 'cloudinary';
-import View from './view';
+import View from '../gallery/view';
 
 interface MyImage {
     public_id: string,
@@ -12,7 +12,7 @@ interface MyImage {
 const Page = async () => {
    
     let res = await cloudinary.v2.search
-        .expression('resource_type:image')
+        .expression("resource_type:image AND tags=favourite")
         .sort_by('created_at', 'desc')
         .max_results(5  )
         .with_field("tags")
@@ -22,9 +22,9 @@ const Page = async () => {
     return (
         <>
             <div className='flex items-center justify-between py-4 px-5'>
-                <h2 className="text-3xl font-semibold tracking-tight"> Gallery</h2>
+                <h2 className="text-3xl font-semibold tracking-tight"> Favourite</h2>
 
-                <Upload />
+               
             </div>
             <div className='columns-4 gap-4 mx-auto p-5 space-y-4 '>
                     {res.resources.map((item,i)=>{

@@ -44,7 +44,7 @@ const SideBar = () => {
                         </Link>
                         {/* Favourite  */}
 
-                        <Link href={"#"}>
+                        <Link href={"/favourite"}>
                             <Button variant="ghost" className="w-full justify-start text-lg">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
