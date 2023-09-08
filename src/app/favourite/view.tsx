@@ -2,9 +2,9 @@
 
 import { CldImage } from "next-cloudinary"
 import {AiOutlineHeart, AiFillHeart}from "react-icons/ai"
-import { AddTags } from "./action"
+import { AddTags } from "../gallery/action"
 import { useState } from "react"
-const View = ({src,tag}:{src:string, tag:string[]}) => {
+const View = ({src,tag,fun}:{fun:any,src:string, tag:string[]}) => {
   const [fav,setFav]=useState(tag.includes("favourite"))
   return (
     <div className="relative">
@@ -20,6 +20,7 @@ const View = ({src,tag}:{src:string, tag:string[]}) => {
 />
 
 <div className="absolute top-1 right-1" onClick={()=>{
+  fun(src)
   setFav(!fav)
   AddTags(src,fav)
 }}>
